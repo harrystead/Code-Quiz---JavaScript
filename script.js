@@ -65,4 +65,45 @@ function displayQuestion() {
 
 /////////////////////////////////////////
 
+function isCorrectAnswer() {
+    var answer = questions[currentIndex].answer;
+    userAnswer = this.innerHTML;
+  
+    if (userAnswer === answer) {
+      console.log("answer correct");
+    } else if (userAnswer !== answer) {
+      removeTime();
+      console.log("answer incorrect");
+    }
+    currentIndex++;
+    if (currentIndex === questions.length) {
+      console.log(getScore());
+      window.location.href = "highscore.html";
+    }
+    displayQuestion();
+    console.log("finish isCorrectAnswer");
+  }
+  
+  /////////////////////////
+  
+  //call functions 
+  function addTime() {
+    secondsRemaining += 15;
+  }
+  
+  function removeTime() {
+    secondsRemaining -= 15;
+  }
+  
+  function getScore() {
+    return secondsRemaining;
+  }
+  localStorage.setItem("Score", secondsRemaining);
+  
+  function getUserInfo() {}
+  
+  function saveScore() {}
+  
+  console.log(questions);
+
 
